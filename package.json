@@ -1,7 +1,7 @@
 {
-	"name": "molang",
-	"version": "2.0.1",
-	"description": "A fast parser for Minecraft's MoLang",
+	"name": "@lunarclient/molang",
+	"version": "0.0.1",
+	"description": "Lunar Client's fork of bridge-core's molang parser",
 	"main": "./dist/molang.umd.js",
 	"module": "./dist/molang.es.js",
 	"types": "./dist/main.d.ts",
@@ -23,14 +23,14 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/solvedDev/MoLang.git"
+		"url": "git+https://github.com/LunarClient/node-molang.git"
 	},
 	"author": "solvedDev",
 	"license": "MIT",
 	"bugs": {
-		"url": "https://github.com/solvedDev/MoLang/issues"
+		"url": "https://github.com/LunarClient/node-molang/issues"
 	},
-	"homepage": "https://github.com/solvedDev/MoLang#readme",
+	"homepage": "https://github.com/LunarClient/node-molang#readme",
 	"devDependencies": {
 		"@types/node": "^13.1.2",
 		"molangjs": "^1.5.0",
