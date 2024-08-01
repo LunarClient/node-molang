@@ -29,4 +29,7 @@ export const KeywordTokens = new Set([
 	'loop',
 	'false',
 	'true',
+	'if',
+	'elif',
+	'else',
 ])

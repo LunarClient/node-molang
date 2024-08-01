@@ -24,6 +24,7 @@ import { OrOperator } from './parselets/OrOperator'
 import { SmallerOperator } from './parselets/SmallerOperator'
 import { GreaterOperator } from './parselets/GreaterOperator'
 import { QuestionOperator } from './parselets/QuestionOperator'
+import { IfParselet } from './parselets/if'
 
 export class MolangParser extends Parser {
 	constructor(config: Partial<IParserConfig>) {
@@ -40,6 +41,7 @@ export class MolangParser extends Parser {
 		this.registerPrefix('BREAK', new BreakParselet())
 		this.registerPrefix('LOOP', new LoopParselet())
 		this.registerPrefix('FOR_EACH', new ForEachParselet())
+		this.registerPrefix('IF', new IfParselet())
 		this.registerInfix(
 			'QUESTION',
 			new QuestionOperator(EPrecedence.CONDITIONAL)
