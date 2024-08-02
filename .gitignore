@@ -1,5 +1,6 @@
 node_modules
 perf/*
+dist
 
 tsconfig.tsbuildinfo
 .DS_STORE

@@ -12,13 +12,11 @@ jobs:
             - name: Checkout Repo
               uses: actions/checkout@v3
 
-            - name: Install
-              uses: moonsworth/actions/setup-node@master
+            - name: Setup PNPM
+              uses: pnpm/action-setup@v3
               with:
-                  node_version: 20
-                  node_scope: '@LunarClient'
-                  github_token: ${{ secrets.GITHUB_TOKEN }}
-                  npm_token: ${{ secrets.NPM_TOKEN }}
+                  version: 8
+                  run_install: true
 
             - name: Build Packages
               run: pnpm build
@@ -37,13 +35,11 @@ jobs:
             - name: Checkout Repo
               uses: actions/checkout@v3
 
-            - name: Install
-              uses: moonsworth/actions/setup-node@master
+            - name: Setup PNPM
+              uses: pnpm/action-setup@v3
               with:
-                  node_version: 20
-                  node_scope: '@LunarClient'
-                  github_token: ${{ secrets.GITHUB_TOKEN }}
-                  npm_token: ${{ secrets.GITHUB_TOKEN }}
+                  version: 8
+                  run_install: true
 
             - name: Create Release Pull Request or Publish to npm
               id: changesets
@@ -52,5 +48,3 @@ jobs:
                   publish: pnpm release
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                  NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                  NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
