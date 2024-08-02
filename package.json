@@ -15,11 +15,13 @@
 		"lib": "lib"
 	},
 	"scripts": {
-		"build:types": "tsc --project tsconfig.json",
-		"build:only": "vite build",
-		"build": "npm run build:only && npm run build:types",
+		"build": "vite build",
 		"test": "vitest",
-		"bench": "vitest bench"
+		"types": "tsc --project tsconfig.json",
+		"bench": "vitest bench",
+		"changeset": "changeset",
+		"version-packages": "changeset version",
+		"release": "pnpm build && changeset publish"
 	},
 	"repository": {
 		"type": "git",
@@ -32,6 +34,7 @@
 	},
 	"homepage": "https://github.com/LunarClient/node-molang#readme",
 	"devDependencies": {
+		"@changesets/cli": "^2.27.1",
 		"@types/node": "^13.1.2",
 		"molangjs": "^1.5.0",
 		"typescript": "^4.2.3",

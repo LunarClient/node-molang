@@ -25,7 +25,7 @@ export class IfExpression extends Expression {
 			this.consequent,
 			...this.elifClauses.flatMap((clause) => clause.allExpressions),
 			this.alternate,
-		].filter((expr) => expr !== undefined)
+		].filter((expr) => expr !== undefined) as IExpression[]
 	}
 	setExpressionAt(index: number, expr: IExpression) {
 		if (index === 0) this.test = expr
