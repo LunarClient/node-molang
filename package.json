@@ -1,6 +1,6 @@
 {
 	"name": "@lunarclient/molang",
-	"version": "0.0.1",
+	"version": "1.0.0",
 	"description": "Lunar Client's fork of bridge-core's molang parser",
 	"main": "./dist/molang.umd.js",
 	"module": "./dist/molang.es.js",
