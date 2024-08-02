@@ -1,0 +1,51 @@
+name: Quality & Release
+
+on: [push]
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+    quality:
+        name: Quality
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout Repo
+              uses: actions/checkout@v3
+
+            - name: Setup PNPM
+              uses: pnpm/action-setup@v3
+              with:
+                  version: 8
+                  run_install: true
+
+            - name: Build Packages
+              run: pnpm build
+
+            - name: Run Tests
+              run: pnpm test
+
+            - name: Check Types
+              run: pnpm types
+    release:
+        name: Release
+        runs-on: ubuntu-latest
+        needs: quality
+        if: github.ref == 'refs/heads/master'
+        steps:
+            - name: Checkout Repo
+              uses: actions/checkout@v3
+
+            - name: Setup PNPM
+              uses: pnpm/action-setup@v3
+              with:
+                  version: 8
+                  run_install: true
+
+            - name: Create Release Pull Request or Publish to npm
+              id: changesets
+              uses: changesets/action@v1
+              with:
+                  publish: pnpm release
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
