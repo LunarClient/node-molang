@@ -7,11 +7,12 @@
 		"moduleResolution": "node",
 		"outDir": "./dist/",
 		"rootDir": "./lib/",
-		"composite": true,
 		"removeComments": true,
 		"sourceMap": false,
 		"declaration": true,
 		"emitDeclarationOnly": true,
+		"declarationDir": "./dist/",
+		"incremental": false,
 
 		"forceConsistentCasingInFileNames": true,
 
