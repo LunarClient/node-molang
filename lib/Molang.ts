@@ -110,7 +110,6 @@ export class Molang {
 		let abstractSyntaxTree = this.parser.parseExpression()
 		if ((this.config.useOptimizer ?? true) && abstractSyntaxTree.isStatic())
 			abstractSyntaxTree = new StaticExpression(abstractSyntaxTree.eval())
-		// console.log(JSON.stringify(abstractSyntaxTree, null, '  '))
 
 		if (this.config.useCache ?? true) {
 			if (this.totalCacheEntries > (this.config.maxCacheSize || 256))

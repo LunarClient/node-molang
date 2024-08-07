@@ -1,5 +1,11 @@
 # @lunarclient/molang
 
+## 1.0.3
+
+### Patch Changes
+
+-   fix: prevent if statements from ending statement parsing
+
 ## 1.0.2
 
 ### Patch Changes

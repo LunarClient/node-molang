@@ -63,3 +63,21 @@ test('Nested conditionals', () => {
 
 	expect(molang.execute(statement)).toBe(4)
 })
+
+test('No return', () => {
+	const statement = `
+    v.test = 10;
+
+    if (v.test == 10) {
+        v.test = 1;
+    }
+
+    if (v.test == 1) {
+        v.test = 50;
+    }
+
+    return 50;
+    `
+
+	expect(molang.execute(statement)).toBe(50)
+})

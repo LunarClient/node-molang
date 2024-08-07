@@ -64,9 +64,11 @@ export class StatementParselet implements IInfixParselet {
 
 				expressions.push(expr)
 			} while (
-				parser.match('SEMICOLON') &&
-				!parser.match('EOF') &&
-				!parser.match('CURLY_RIGHT', false)
+				(parser.match('SEMICOLON') &&
+					!parser.match('EOF') &&
+					!parser.match('CURLY_RIGHT', false)) ||
+				(expressions[expressions.length - 1].type === 'IfExpression' &&
+					!parser.match('EOF'))
 			)
 		}
 
