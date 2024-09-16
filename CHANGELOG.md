@@ -1,5 +1,11 @@
 # @lunarclient/molang
 
+## 1.0.4
+
+### Patch Changes
+
+-   feat: set left operator of nullish operator to result of operation
+
 ## 1.0.3
 
 ### Patch Changes

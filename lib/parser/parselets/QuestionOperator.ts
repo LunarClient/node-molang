@@ -12,13 +12,45 @@ export class QuestionOperator implements IInfixParselet {
 
 	parse(parser: Parser, leftExpression: IExpression, token: Token) {
 		if (parser.match('QUESTION')) {
-			return new GenericOperatorExpression(
+			const rightExpression = parser.parseExpression(this.precedence)
+			const result = new GenericOperatorExpression(
 				leftExpression,
-				parser.parseExpression(this.precedence),
+				rightExpression,
 				'??',
-				(leftExpression: IExpression, rightExpression: IExpression) =>
-					leftExpression.eval() ?? rightExpression.eval()
+				(leftExpression: IExpression, rightExpression: IExpression) => {
+					const leftVal = leftExpression.eval()
+					const rightVal = rightExpression.eval()
+
+					return leftVal ?? rightVal
+				}
 			)
+
+			// Check if left side is assignable
+			if (leftExpression.setPointer && !leftExpression.eval()) {
+				// Set the result back to the left expression
+				return new GenericOperatorExpression(
+					leftExpression,
+					rightExpression,
+					'=',
+					(
+						leftExpression: IExpression,
+						rightExpression: IExpression
+					) => {
+						if (leftExpression.setPointer) {
+							leftExpression.setPointer(
+								leftExpression.eval() ?? rightExpression.eval()
+							)
+							return leftExpression.eval()
+						} else {
+							throw Error(
+								`Cannot assign to ${leftExpression.type}`
+							)
+						}
+					}
+				)
+			}
+
+			return result
 		} else {
 			return ternaryParselet.parse(parser, leftExpression, token)
 		}
