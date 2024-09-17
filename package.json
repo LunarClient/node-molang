@@ -1,6 +1,6 @@
 {
 	"name": "@lunarclient/molang",
-	"version": "1.0.5",
+	"version": "1.0.6",
 	"description": "Lunar Client's fork of bridge-core's molang parser",
 	"main": "lib/main.ts",
 	"files": [
