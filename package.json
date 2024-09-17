@@ -2,18 +2,10 @@
 	"name": "@lunarclient/molang",
 	"version": "1.0.4",
 	"description": "Lunar Client's fork of bridge-core's molang parser",
-	"main": "./dist/molang.umd.js",
-	"module": "./dist/molang.es.js",
-	"types": "./dist/main.d.ts",
-	"exports": {
-		".": {
-			"import": "./dist/molang.es.js",
-			"require": "./dist/molang.umd.js"
-		}
-	},
-	"directories": {
-		"lib": "lib"
-	},
+	"main": "lib/main.ts",
+	"files": [
+		"dist"
+	],
 	"scripts": {
 		"build": "vite build && tsc --project tsconfig.json",
 		"test": "vitest",
@@ -21,7 +13,9 @@
 		"bench": "vitest bench",
 		"changeset": "changeset",
 		"version-packages": "changeset version",
-		"release": "pnpm build && changeset publish"
+		"release": "pnpm build && changeset publish",
+		"prepack": "clean-package",
+		"postpack": "clean-package restore"
 	},
 	"repository": {
 		"type": "git",
@@ -39,6 +33,10 @@
 		"molangjs": "^1.5.0",
 		"typescript": "^4.2.3",
 		"vite": "^3.1.3",
-		"vitest": "^0.23.4"
+		"vitest": "^0.23.4",
+		"clean-package": "^2.2.0"
+	},
+	"clean-package": {
+		"extends": "@moonsworth/cleanpackage-config/base.json"
 	}
 }
