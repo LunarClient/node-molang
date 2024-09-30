@@ -1,5 +1,11 @@
 # @lunarclient/molang
 
+## 1.0.7
+
+### Patch Changes
+
+-   feat: allow bang in front of booleans
+
 ## 1.0.6
 
 ### Patch Changes

@@ -25,7 +25,7 @@ export class PrefixExpression extends Expression {
 	eval() {
 		const value = this.expression.eval()
 
-		if (typeof value !== 'number')
+		if (typeof value !== 'number' && typeof value !== 'boolean')
 			throw new Error(
 				`Cannot use "${
 					this.tokenType
@@ -37,7 +37,7 @@ export class PrefixExpression extends Expression {
 				return -value
 			}
 			case 'BANG': {
-				return !value
+				return Number(!value)
 			}
 		}
 	}
