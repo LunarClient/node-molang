@@ -106,7 +106,7 @@ test('Custom syntax', () => {
 		"return ({t.axis=='x'?{t.__scvar0=v.x;}:{t.axis=='y'?{t.__scvar0=v.y;}:{t.__scvar0=v.z;};};}+t.__scvar0);"
 	)
 	expect(customMolang.transform('t.x = 1; f.sq(2);')).toBe(
-		't.x=1;(math.pow(2,2));'
+		't.x=1;return (math.pow(2,2));'
 	)
 	expect(customMolang.transform('t.x = 1; return f.sq(2);')).toBe(
 		't.x=1;return (math.pow(2,2));'

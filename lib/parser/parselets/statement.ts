@@ -4,6 +4,7 @@ import { Token } from '../../tokenizer/token'
 import { IInfixParselet } from './infix'
 import { StatementExpression } from '../expressions/statement'
 import { StaticExpression } from '../expressions/static'
+import { ReturnExpression } from '../expressions'
 
 export class StatementParselet implements IInfixParselet {
 	constructor(public precedence = 0) {}
@@ -70,6 +71,18 @@ export class StatementParselet implements IInfixParselet {
 				(expressions[expressions.length - 1].type === 'IfExpression' &&
 					!parser.match('EOF'))
 			)
+
+			// Infer when statement should be returned
+			if (
+				!expressions.some((expr) => expr.isReturn) &&
+				!expressions[expressions.length - 1].isReturn &&
+				expressions[expressions.length - 1].type !==
+					'GenericOperatorExpression'
+			) {
+				expressions[expressions.length - 1] = new ReturnExpression(
+					expressions[expressions.length - 1]
+				)
+			}
 		}
 
 		parser.match('SEMICOLON')
