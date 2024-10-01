@@ -40,6 +40,10 @@ export class StatementParselet implements IInfixParselet {
 		if (!parser.match('CURLY_RIGHT', false)) {
 			do {
 				let expr = parser.parseExpression(this.precedence)
+
+				// skip void expressions, this is so the optimizer doesnt register them as they're unnecessary and causes them to be infered as a returnable statement
+				if (expr.type === 'VoidExpression') continue
+
 				if (parser.config.useOptimizer) {
 					if (expr.isStatic()) {
 						if (

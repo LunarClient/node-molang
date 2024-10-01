@@ -1,5 +1,11 @@
 # @lunarclient/molang
 
+## 1.0.9
+
+### Patch Changes
+
+-   fix: skip void expressions in statement parselet
+
 ## 1.0.8
 
 ### Patch Changes
