@@ -26,9 +26,15 @@ test('Infer return at end of statement with function', () => {
 test('Infer return at end of statement with negative variable', () => {
 	const statement = `v.y = 10;`
 
-	expect(molang.execute(statement)).toBe(0)
+	expect(molang.execute(statement)).toBe(10)
 
 	const statement2 = `-v.y;`
 
 	expect(molang.execute(statement2)).toBe(-10)
+})
+
+test('Infer return at end of assignment statement', () => {
+	const statement = `v.z = 10;`
+
+	expect(molang.execute(statement)).toBe(10)
 })

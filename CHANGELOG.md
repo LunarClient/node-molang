@@ -1,5 +1,11 @@
 # @lunarclient/molang
 
+## 1.0.10
+
+### Patch Changes
+
+-   fix: infer return of the left hand of assignment operator
+
 ## 1.0.9
 
 ### Patch Changes

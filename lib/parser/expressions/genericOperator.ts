@@ -35,3 +35,9 @@ export class GenericOperatorExpression extends Expression {
 		return `${this.left.toString()}${this.operator}${this.right.toString()}`
 	}
 }
+
+export function isGenericOperatorExpression(
+	expr: IExpression
+): expr is GenericOperatorExpression {
+	return expr.type === 'GenericOperatorExpression'
+}
